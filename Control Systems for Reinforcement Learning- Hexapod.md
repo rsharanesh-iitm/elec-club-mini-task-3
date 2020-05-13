@@ -53,7 +53,27 @@ Sensors(MPU-9250 and flex sensors) => Microcontroller => Serial Communication(us
 |Python Scripting (Receive and process data)|The data that is being transmitted from the microcontroller needs to received by the simulation environment. For that, we use a python script that will run on the simulation environment.|The python programming language has the built-in PySerial Library, that is needed for establishing serial communication. The remaining data processing can be done just by using python alone.|Needs good coding skills with knowledge of all commands.
 |Simulation Environment (Blender)|Blender is used here to create the exact 3D replica of our hexapod and then using the data from the sensors the orientation of the hexapod is produced on it at any time.|Blender has built-in capabilities to run python scripts, create 3-D objects and simulate them for motion capturing, etc.,|Need some experience in fusion360 or unity to play with blender.|
 
+## Resources Used:
+### MPU-9250 IMU Sensor: ([Datasheet](https://invensense.tdk.com/wp-content/uploads/2015/02/PS-MPU-9250A-01-v1.1.pdf))
+The MPU-9250 IMU sensor is a combination of a 3-axes accelerometer, a gyroscope, and a magnetometer. It can be connected easily to ESP32 since it is I2C compatible. So, we use this sensor and then deploy serial communication with ESP32 in order to transfer the sensor data. Also, another ease of using it is there are few built-in libraries from adafruit for this sensor.(Check it out [here](https://www.arduinolibraries.info/libraries/mpu9250))
+![MPU-9250](https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR2rgbWwEG4rbEoOeIdo8llTYxKOqsvuaSkBAksPdMjK7HbZFM0&usqp=CAUhttps://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR2rgbWwEG4rbEoOeIdo8llTYxKOqsvuaSkBAksPdMjK7HbZFM0&usqp=CAU)
 
+### Flex Sensor:
+A flex sensor or bend sensor is a sensor that measures the amount of deflection or bending. Usually, the sensor is stuck to the surface, and resistance of sensor element is varied by bending the surface. Here we have six legs and so we use 2 flex sensors on each leg, one on the top and other on the bottom. So, the number of flex sensors used here is 12.
+
+The coding part of flex sensor is too easy and can be jut done with the help of `sensorval=analogRead(pin_number)`.
+
+Flex sensors can be used to make cool stuffs, check them [here.](https://www.youtube.com/watch?v=xDyV6u1SIP0)
+
+The circuit diagram of how to use it with ESP32 can be found [here.](https://www.circuito.io/app?components=513,8606,360217)
+
+Do find out how to get Analog Input using ESP32 and arduino IDE [here.](https://randomnerdtutorials.com/esp32-adc-analog-read-arduino-ide/) 
+![Flex Sensor](https://cdn.sparkfun.com/assets/learn_tutorials/5/1/1/example_circuit_bb.png)
+
+### Microcontroller ESP32:
+The main reason of ESP32 being used here is because of it's bluetooth module, the bluetooth module of ESP32 module supports Serial Communication and so we could use it in a far easier way to transfer the sensor data to the computer.
+The total number of flex sensors used are 12 and each flex sensors need an analog pin and the MPU-9250 sensor needs 2 anlog pins, so a total of 14 ADC pins are required here. Fortuantely ESP32 has around 15 ADC pins and so I think there won't problems with regards to the pins and a need for Mux'es won't occur here.
+![Esp32_pinout](https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/05/adc-pins-esp32-f.jpg?w=840&ssl=1)
 
 ## References:
 1. https://www.youtube.com/watch?v=sGjVTMpYa7o - For the MPU-9250 based implementation of the orientation of the base of the hexapod on the simulation environment.
