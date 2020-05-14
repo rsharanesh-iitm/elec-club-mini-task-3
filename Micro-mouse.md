@@ -88,7 +88,7 @@ In the initial run,where we map, so for that the speed of the motor will be low.
 ### Design:
 The design for it can be made on a general PCB with two motors and a castor wheel in the front. The two stepper motors are placed at the back and then arduino is placed on the chases and then the two micro controllers placed near the board itself. The Three Ultrasonic sensors are placed one at the front and two are located near the sides. The weight of each motor is around 200gm and the total weight of the bot will be around 500gm. 
 
-![Layout](images/bot layout.jpg)
+![Layout](images/bot_layout.jpg)
 
 
 ## Cost Analysis:
@@ -98,7 +98,7 @@ The design for it can be made on a general PCB with two motors and a castor whee
 4. Arduino Nano - 1 unit. (Rs.1428) 
 (https://robu.in/product/original-arduino-nano/)
 
-Total: Rs.1200 (approx.)
+Total: Rs.3200 + Other costs (Rs:300) = Rs.3500 
 
 ## References:
 1. https://ieeexplore.ieee.org/document/5578409 - Algorithm
